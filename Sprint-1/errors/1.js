@@ -6,4 +6,6 @@ console.log(age);
 
 // We need to change the line 3. And define the variable with `let`.
 // Rather than using `const`.
-// It gives the chance to change the values and do the over ride the variable. 
+// It gives the chance to change the values and do the overwrite the variable.
+
+
