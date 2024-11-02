@@ -13,7 +13,7 @@ const num = 56.5678;
 const wholeNumberPart = Math.floor(num);
 
 // the decimal part of num
-const decimalPart = num - wholeNumberPart
+const decimalPart = +(num - wholeNumberPart).toFixed(4); //.toFixed limits the decimal places in form of string. And the + sign turns the string to an integer.
 
 // num rounded to the nearest whole number
 const roundedNum = Math.round(num);
