@@ -13,13 +13,9 @@
   // Removed `const decimalNumber = 0.5;` from the code
   // In line 28, replaced the `decimalNumber` with `convertToPercentage()` and put a decimalNumber as an argument.
   // This way function is called and the argument is passes and as a result the percentage is returned and
-  //  finally in line 30, the result is returned in the console. 
+  //  finally in line 30, the result is returned in the console.
 
-
-
-
-
-
+  
 function convertToPercentage(decimalNumber) {
 
   const percentage = `${decimalNumber * 100}%`;
