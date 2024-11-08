@@ -8,3 +8,9 @@
 // Given a number,
 // When I call this function with a number
 // it returns the new price with VAT added on
+function vatTotalInclusivePrice(price){
+  return `£${(price * (1.2)).toFixed(2)}`;// .toFixed() returns a variable with two extra digits in the end.
+}
+console.log(vatTotalInclusivePrice(50));
+
+
