@@ -13,3 +13,15 @@
 
 // You will need to come up with an appropriate name for the function
 // Use the string documentation to help you find a solution
+
+
+function toUpperSankCase(string){
+  return string
+  .split(' ') //  Creates an array of each word in the given string and separates the words where it sees a space.
+  .map(item => item.toUpperCase()) // Used .map because needed to go through each item in the array.
+  .join('_'); // .join('_') : Creates a string and joins them with `_`.
+}
+console.log(toUpperSankCase("my holiday will be in Mexico"));
+
+
+
