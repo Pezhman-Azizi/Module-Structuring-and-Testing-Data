@@ -13,6 +13,10 @@ function formatTimeDisplay(seconds) {
   )}`;
 }
 
+console.log(formatTimeDisplay(61));
+
+
+
 // You will need to play computer with this example - use the Python Visualiser https://pythontutor.com/visualize.html#mode=edit
 // to help you answer these questions
 
@@ -22,7 +26,7 @@ function formatTimeDisplay(seconds) {
     // ANSWER: Pad will be called three times (once for totalHours, once for remainingMinutes, and once for remainingSeconds).
 
 // Call formatTimeDisplay with an input of 61, now answer the following:
-  
+
 // b) What is the value assigned to num when pad is called for the first time?
     // ANSWER: num will be 0 (the value of totalHours).
 
