@@ -6,7 +6,8 @@
 
 // Acceptance criteria:
 
-// Given a card string in the format "A♠" (representing a card in blackjack - the last character will always be an emoji for a suit, and all characters before will be a number 2-10, or one letter of J, Q, K, A),
+// Given a card string in the format "A♠" (representing a card in blackjack - the last character
+// will always be an emoji for a suit, and all characters before will be a number 2-10, or one letter of J, Q, K, A),
 // When the function getCardValue is called with this card string as input,
 // Then it should return the numerical card value
 
@@ -29,3 +30,19 @@
 // Given a card with an invalid rank (neither a number nor a recognized face card),
 // When the function is called with such a card,
 // Then it should throw an error indicating "Invalid card rank."
+function getCardValue(card){
+
+  const cardValue = card.slice(0, -1); // // Extracts the value of a card by slicing.
+  // Starts at index 0 (the first character) and excludes the last character (index -1).
+  const numericValue = Number(cardValue);
+
+  if ( numericValue >= 2  && numericValue <= 10){ //insures that the numeric value is valid. For example 13♠ should return "Invalid card rank."
+    return `your score is: ${numericValue}`;
+  }else if(["J", "Q", "K"].includes(cardValue)){ //makes sure that the card value includes one of the letters of K, J or Q.
+    return `your score is: ${10}`;
+  }else if (cardValue === "A"){
+    return `your score is: ${11}`;
+  }else
+    return `Invalid card rank.`
+}
+console.log(getCardValue("K♠"));
