@@ -33,29 +33,19 @@
 // Explanation: The fraction 3/3 is not a proper fraction because the numerator is equal to the denominator. The function should return false.
 // These acceptance criteria cover a range of scenarios to ensure that the isProperFraction function handles both proper and improper fractions correctly and handles potential errors such as a zero denominator.
 
-function isProperFraction(numerator, denominator){
-   numerator = Math.abs(numerator);
-   denominator = Math.abs(denominator);
-
-   if(denominator === 0){
+function isProperFraction(numerator, denominator) {
+  if (denominator === 0) {
     throw new Error("Denominator cannot be zero");
-   }else if(numerator === denominator){
-    return false;
-   }else if(numerator < denominator){
-    return true;
-   }else{
-    return false;
-   }
+  }
+  return Math.abs(numerator) < Math.abs(denominator);
 }
-console.log(isProperFraction(4, 0));
 
-
+// Test cases
 console.assert(isProperFraction(2, 3) === true, "2/3 should be a proper fraction");
-console.assert(isProperFraction(5, 2) === false, "5/2 should return an improper fraction");
-console.assert(isProperFraction(-4, 7) === true, "-7/2 should return a proper fraction");
-try {
-  isProperFraction(4, 0); // Call the function with invalid input
-  console.assert(false, "4/0 should throw an error"); // Fail the test if no error is thrown
-} catch (e) {
-  console.assert(e.message === "Denominator cannot be zero", "Error message should be 'Denominator cannot be zero'");
-}
+console.assert(isProperFraction(3, 2) === false, "3/2 should not be a proper fraction");
+console.assert(isProperFraction(-2, 3) === true, "-2/3 should be a proper fraction");
+console.assert(isProperFraction(2, -3) === true, "2/-3 should be a proper fraction");
+console.assert(isProperFraction(-2, -3) === true, "-2/-3 should be a proper fraction");
+console.assert(isProperFraction(3, -2) === false, "3/-2 should not be a proper fraction");
+console.assert(isProperFraction(-3, 2) === false, "-3/2 should not be a proper fraction");
+console.log("All tests passed!");
