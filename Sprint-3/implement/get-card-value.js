@@ -30,19 +30,41 @@
 // Given a card with an invalid rank (neither a number nor a recognized face card),
 // When the function is called with such a card,
 // Then it should throw an error indicating "Invalid card rank."
-function getCardValue(card){
+function getCardValue(card) {
+  const cardRank = card.slice(0, -1); // Extracts the rank (e.g., "K" from "K♠")
+  const cardSuit = card.slice(-1);   // Extracts the suit (e.g., "♠" from "K♠")
+  const validRanks = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"];
+  const validSuits = ["♠", "♥", "♦", "♣"];
 
-  const cardValue = card.slice(0, -1); // // Extracts the value of a card by slicing.
-  // Starts at index 0 (the first character) and excludes the last character (index -1).
-  const numericValue = Number(cardValue);
+  if (!validRanks.includes(cardRank) || !validSuits.includes(cardSuit)) {
+    return "Invalid card rank.";
+  }
 
-  if ( numericValue >= 2  && numericValue <= 10){ //insures that the numeric value is valid. For example 13♠ should return "Invalid card rank."
-    return `your score is: ${numericValue}`;
-  }else if(["J", "Q", "K"].includes(cardValue)){ //makes sure that the card value includes one of the letters of K, J or Q.
-    return `your score is: ${10}`;
-  }else if (cardValue === "A"){
-    return `your score is: ${11}`;
-  }else
-    return `Invalid card rank.`
+  switch (cardRank) {
+    case "A": return 1;
+    case "2": return 2;
+    case "3": return 3;
+    case "4": return 4;
+    case "5": return 5;
+    case "6": return 6;
+    case "7": return 7;
+    case "8": return 8;
+    case "9": return 9;
+    case "10": return 10;
+    case "J": return 11;
+    case "Q": return 12;
+    case "K": return 13;
+    default: return "Invalid card rank.";
+  }
 }
-console.log(getCardValue("K♠"));
+
+// Test cases
+console.assert(getCardValue("K♠") === 13, "Failed: Expected 13");
+console.assert(getCardValue("Q♣") === 12, "Failed: Expected 12");
+console.assert(getCardValue("A♦") === 1, "Failed: Expected 1");
+console.assert(getCardValue("10♥") === 10, "Failed: Expected 10");
+console.assert(getCardValue("0Q♠") === "Invalid card rank.", "Failed: Expected Invalid card rank.");
+console.assert(getCardValue("010♠") === "Invalid card rank.", "Failed: Expected Invalid card rank.");
+console.assert(getCardValue("02♠") === "Invalid card rank.", "Failed: Expected Invalid card rank.");
+console.assert(getCardValue("0x02♠") === "Invalid card rank.", "Failed: Expected Invalid card rank.");
+console.assert(getCardValue("2.1♠") === "Invalid card rank.", "Failed: Expected Invalid card rank.");
