@@ -54,30 +54,38 @@
 // letters, digits and symbols. In this case we are dealing with letters only.
 // Lower case letters range from 97 to 122 and uppercase letters range from 65 to 90.
 
-function rotateCharacter(letter, shift){
+function rotateCharacter(letter, shift) {
+  const asciiValue = letter.charCodeAt(0); // Gets the ASCII value for the character
 
-  const asciiValue = letter.charCodeAt(0); // Gets the ASCII value for each alphabetic letter.
+  shift = shift % 26; // Normalize the shift for large or negative values
 
-  shift = shift % 26; // normalizing shift for large and negative values.
-
-  if(asciiValue >= 65 && asciiValue <= 90){ //ASCII code for uppercase
+  if (asciiValue >= 65 && asciiValue <= 90) { // Uppercase letters
     let rotatedAscii = asciiValue + shift;
-    if(rotatedAscii >= 91){
-      rotatedAscii -= 26; // Applies the wraparound for upper case letters.
-    }else if(asciiValue < 65){
-      rotatedAscii += 26; // Sorts out the negative wraparound
+    if (rotatedAscii > 90) {
+      rotatedAscii -= 26; // Wraparound for uppercase
+    } else if (rotatedAscii < 65) {
+      rotatedAscii += 26; // Negative wraparound
     }
-  }else if (asciiValue >= 97 && asciiValue <= 122){ //ASCII code for lowercase
+    return String.fromCharCode(rotatedAscii);
+  } else if (asciiValue >= 97 && asciiValue <= 122) { // Lowercase letters
     let rotatedAscii = asciiValue + shift;
-    if(rotatedAscii>=123){
-      rotatedAscii -= 26; // Applies the wraparound for lower case letters.
-   }else if(rotatedAscii < 97){
-      rotatedAscii += 26; // Sorts out the negative wraparound
-   }
-   return String.fromCharCode(rotatedAscii);
-  }else{
-    return `Not a valid character`;
+    if (rotatedAscii > 122) {
+      rotatedAscii -= 26; // Wraparound for lowercase
+    } else if (rotatedAscii < 97) {
+      rotatedAscii += 26; // Negative wraparound
+    }
+    return String.fromCharCode(rotatedAscii);
+  } else {
+    return letter; // Leave non-letter characters unchanged
   }
 }
 
-console.log(rotateCharacter("z", -1));
+// Test cases
+console.log(rotateCharacter("z", -1)); // "y"
+console.log(rotateCharacter("a", -1)); // "z"
+console.log(rotateCharacter("A", 27)); // "B"
+console.log(rotateCharacter("Z", 1)); // "A"
+console.log(rotateCharacter("1", 5)); // "1" (unchanged)
+console.log(rotateCharacter("!", 3)); // "!" (unchanged)
+console.log(rotateCharacter(" ", 10)); // " " (unchanged)
+
