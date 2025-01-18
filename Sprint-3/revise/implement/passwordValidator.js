@@ -1,26 +1,22 @@
 //--------------------------------------------------------- Approach 1 -----------------------------------------------
 
 const passwords = ["passwords123", "Vh2hjo!", "Aklni4@"];
-function passwordValidator(password){
+function passwordValidator(password) {
+  if (password.length < 5) return false;
 
-  if(password.length < 5) return false;
+  const hasLowerCase = /[a-z]/.test(password);
+  const hasUpperCase = /[A-Z]/.test(password);
+  const hasNumber = /\d/.test(password);
+  const hasSpecialCharacter = /[!#$%.*&]/.test(password);
+  const repeated = passwords.includes(password);
 
-  let hasLowerCase = (/[a-z]/.test(password));
-  let upperCase = (/[A-Z]/.test(password));
-  let hasNumber = (/\d/.test(password));
-  let hasSpecialCharacter = (/[!#$%.*&]/.test(password));
-  let repeated = passwords.includes(password);
-  console.log(repeated);
-
-  if(hasLowerCase && upperCase && hasNumber && hasSpecialCharacter && !repeated){
-    return true;
-  }else{
-    return false;
-  }
+  return hasLowerCase && hasUpperCase && hasNumber && hasSpecialCharacter && !repeated;
 }
-console.log(passwordValidator("Vh2hjoo!"));
 
-module.exports = passwordValidator;
+console.log(passwordValidator("Vh2hjoo!")); // Test case
+
+module.exports = passwordValidator; // Export the function
+
 
 //-------------------------------------------------------- Approach 2 ------------------------------------------------
 
