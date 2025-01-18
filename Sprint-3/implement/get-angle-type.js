@@ -41,4 +41,10 @@ function getAngleType(angel){
   return "invalid angel";
  }
 }
-console.log(getAngleType(180));
+// Test cases
+console.assert(getAngleType(45) === "Acute angle", "Failed: Expected Acute angle");
+console.assert(getAngleType(90) === "Right angle", "Failed: Expected Right angle");
+console.assert(getAngleType(135) === "Obtuse angle", "Failed: Expected Obtuse angle");
+console.assert(getAngleType(180) === "Straight angle", "Failed: Expected Straight angle");
+console.assert(getAngleType(-10) === "Invalid angle", "Failed: Expected Invalid angle");
+console.assert(getAngleType(200) === "Invalid angle", "Failed: Expected Invalid angle");
