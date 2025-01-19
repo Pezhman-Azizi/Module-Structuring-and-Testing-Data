@@ -14,12 +14,12 @@
     // `str` is already declared as the function’s input, so when we added `let str` inside the function,
     // it got confused. To fix it, I’ll just remove let and use str directly instead."
 
-function capitalise(str) {
-  str = `${str[0].toUpperCase()}${str.slice(1)}`;
-  return str;
-}
+    function capitalise(str) {
+      const capitalizedStr = `${str[0].toUpperCase()}${str.slice(1)}`;
+      return capitalizedStr;
+    }
 
-console.log(capitalise("hello world!"));
+    console.log(capitalise("hello world!"));
 
 
 // Additional explanation:
